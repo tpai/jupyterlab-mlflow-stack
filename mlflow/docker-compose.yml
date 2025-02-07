@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  web:
+    restart: always
+    build: .
+    image: mlflow_server
+    container_name: mlflow_server
+    ports:
+      - "5000:5000"
+    environment:
+      - AZURE_STORAGE_CONNECTION_STRING=
+      - AZURE_STORAGE_ACCESS_KEY=
+    command: mlflow server --backend-store-uri postgresql://dbuser:dbpass@10.100.10.4:5432/mlflowdb --artifacts-destination wasbs://mlflow@xxxxxx.blob.core.windows.net/ --host 0.0.0.0
