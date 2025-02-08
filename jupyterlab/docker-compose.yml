@@ -11,4 +11,5 @@ services:
       - AZURE_STORAGE_ACCESS_KEY=
     volumes:
       - "./jupyterlab-data:/home/jovyan"
+      - "./jupyter_server_config.py:/home/jovyan/.jupyter/jupyter_server_config.py"
     restart: always
