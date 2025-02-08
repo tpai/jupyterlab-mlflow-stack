@@ -1,16 +1,14 @@
-version: '3.7'
-
 services:
   jupyterlab:
-    restart: always
     build: .
     image: jupyterlab_server
     container_name: jupyterlab
     ports:
-   	  - "8888:8888"
+      - "8888:8888"
     environment:
       - MLFLOW_TRACKING_URI=http://10.100.10.5:5000
       - AZURE_STORAGE_CONNECTION_STRING=
       - AZURE_STORAGE_ACCESS_KEY=
     volumes:
       - "./jupyterlab-data:/home/jovyan"
+    restart: always
