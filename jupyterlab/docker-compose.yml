@@ -13,3 +13,10 @@ services:
       - "./jupyterlab-data:/home/jovyan"
       - "./jupyter_server_config.py:/home/jovyan/.jupyter/jupyter_server_config.py"
     restart: always
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
